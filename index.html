@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IAM Layout - Head, Neck, Body 100% & Profile</title>
+  <style>
+    /* Reset CSS cơ bản */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Đảm bảo khung HTML và Body chiếm trọn 100% màn hình */
+    html, body {
+      height: 100%;
+      width: 100%;
+      background-color: #0f172a;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+
+    /* Container chính bao phủ toàn bộ chiều cao */
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh; /* 100% Viewport Height */
+      width: 100%;
+    }
+
+    /* 1. IAM HEAD (Header chính) */
+    .iam-head {
+      height: 60px;
+      background-color: #1e293b;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .iam-head .brand {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    /* Nút Bật/Tắt Profile */
+    .btn-toggle-profile {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-toggle-profile:hover {
+      background-color: #2563eb;
+    }
+
+    /* 2. IAM NECK (Thanh chuyển tiếp / Phân vùng cổ) */
+    .iam-neck {
+      height: 40px;
+      background: linear-gradient(90deg, #4f46e5, #06b6d4);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* 3. IAM BODY (Khu vực nội dung chiếm 100% chiều cao còn lại) */
+    .iam-body {
+      flex: 1; /* Chiếm toàn bộ không gian còn lại */
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      background-color: #0f172a;
+      overflow: hidden;
+    }
+
+    /* Nội dung chính trong IAM Body */
+    .main-content {
+      flex: 1;
+      background-color: #1e293b;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #334155;
+    }
+
+    /* 4. Khung Profile (Bật / Tắt) */
+    .iam-profile {
+      width: 280px;
+      background-color: #1e293b;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #334155;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    /* Khi ẩn Profile */
+    .iam-profile.hidden {
+      display: none;
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .profile-info h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .profile-info p {
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- IAM HEAD -->
+    <header class="iam-head">
+      <div class="brand">IAM HEAD</div>
+      <button class="btn-toggle-profile" onclick="toggleProfile()">
+        👤 Bật / Tắt Profile
+      </button>
+    </header>
+
+    <!-- IAM NECK -->
+    <div class="iam-neck">
+      <span>IAM NECK - Dải phân cách / Thanh thông báo hệ thống</span>
+    </div>
+
+    <!-- IAM BODY (100% Height Space) -->
+    <main class="iam-body">
+      <section class="main-content">
+        <h2>IAM BODY (100%)</h2>
+        <p style="margin-top: 10px; color: #94a3b8;">
+          Đây là khu vực nội dung chính tự động co giãn chiếm trọn 100% diện tích chiều cao còn lại của màn hình.
+        </p>
+      </section>
+
+      <!-- IAM PROFILE CARD -->
+      <aside class="iam-profile" id="profileCard">
+        <div class="avatar">👨‍💻</div>
+        <div class="profile-info">
+          <h3>User Profile</h3>
+          <p>Dev / Admin</p>
+          <hr style="margin: 12px 0; border-color: #334155;">
+          <p style="color: #cbd5e1;">Trạng thái: Online</p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    // Hàm bật/tắt khung Profile
+    function toggleProfile() {
+      const profile = document.getElementById('profileCard');
+      profile.classList.toggle('hidden');
+    }
+  </script>
+
+</body>
+</html>
